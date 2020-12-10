@@ -17,5 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin/login', 'Admin\AuthController@index');
+Route::post('admin/login', 'Admin\AuthController@login');
 
-Route::get('admin','UserController@index');
+
+Route::group(['middleware' => 'AdminAuth'], function () {
+    //
+    Route::get('admin', 'Admin\UserController@dashboard');
+    Route::get('admin/logout', 'Admin\AuthController@logout');
+
+    // users
+    Route::get('admin/users', 'Admin\UserController@index');
+    Route::post('admin/user/add', 'Admin\UserController@store');
+
+    //   create Categories
+    Route::get('admin/categories-adoption', 'Admin\CategoryAdoptionController@index');
+    Route::post('admin/categories-adoption/add', 'Admin\CategoryAdoptionController@store');
+
+    //orphanages
+    Route::get('admin/orphanages', 'Admin\OrphanageController@index');
+    Route::post('admin/orphanage/add', 'Admin\OrphanageController@store');
+
+    //adoptions
+    Route::get('admin/adoptions','Admin\AdoptionController@index');
+    Route::post('admin/adoption/add','Admin\AdoptionController@store');
+});
+
