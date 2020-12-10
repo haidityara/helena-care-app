@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Model\User;
 use Closure;
 
 class checkLog
@@ -15,9 +16,16 @@ class checkLog
      */
     public function handle($request, Closure $next)
     {
-        $user = Session('admin');
-        if (!$user || !isset($user)){
-            return redirect('admin/login');
+        $token_header = $request->header('token');
+        $email_header = $request->header('email');
+        $user = User::where('email', $email_header)
+            ->where('token', $token_header)
+            ->count();
+        if ($user <= 0){
+            return response()->json([
+                'success' => false,
+                'message' => 'Check header token or email',
+            ]);
         }
         return $next($request);
     }

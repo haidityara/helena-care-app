@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', 'API\UserController@store');
+Route::post('login', 'API\AuthController@login');
+
+Route::group(['middleware' => 'APIAuth'], function (){
+    Route::get('getadoptions', 'API\AdoptionController@index');
 });
+
+
