@@ -17,7 +17,7 @@ class UserController extends Controller
         if ($user_find != null) {
             return response()->json([
                 'success' => 'false',
-                'message'=> 'Email already used',
+                'message' => 'Email already used',
             ]);
         }
 
@@ -44,5 +44,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function info(Request $request)
+    {
+        $token_header = $request->header('token');
+        $email_header = $request->header('email');
+
+        $user = User::where('email', $email_header)
+            ->where('token', $token_header)
+            ->first();
+        if (empty($user)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error user not found'
+            ]);
+        }
+        return response()->json($user);
+    }
 
 }

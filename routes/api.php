@@ -18,7 +18,16 @@ Route::post('register', 'API\UserController@store');
 Route::post('login', 'API\AuthController@login');
 
 Route::group(['middleware' => 'APIAuth'], function (){
+    // user information
+    Route::get('user-info', 'API\UserController@info');
+    // adoption
     Route::get('getadoptions', 'API\AdoptionController@index');
+    Route::get('list-adoption-categoriey/{category_id}', 'API\AdoptionController@byCategory');
+    Route::get('adoption/{id}', 'API\AdoptionController@getOne');
+    Route::post('adoption-request','API\RequestAdoptionController@store');
+    //category adoption
+    Route::get('adoption-categories','API\CategoryAdoptionController@index');
+
 });
 
 
