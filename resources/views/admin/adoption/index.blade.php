@@ -29,8 +29,7 @@
                                 <td>{{$adoption->city}}</td>
                                 <td>{{$adoption->province}}</td>
                                 <td>
-                                    <a href="" class="btn btn-info">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="{!! url('admin/adoption/'.$adoption->id.'/delete') !!}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

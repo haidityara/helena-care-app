@@ -13,7 +13,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Action</th>
+{{--                            <th>Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -22,10 +22,10 @@
                                 <td>{{$user->full_name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->role}}</td>
-                                <td>
-                                    <a href="" class="btn btn-info">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                </td>
+{{--                                <td>--}}
+{{--                                    <a href="" class="btn btn-info">Edit</a>--}}
+{{--                                    <a href="" class="btn btn-danger">Delete</a>--}}
+{{--                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>

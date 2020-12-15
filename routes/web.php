@@ -41,5 +41,8 @@ Route::group(['middleware' => 'AdminAuth'], function () {
     //adoptions
     Route::get('admin/adoptions','Admin\AdoptionController@index');
     Route::post('admin/adoption/add','Admin\AdoptionController@store');
+    Route::get('admin/adoption/{id}/delete','Admin\AdoptionController@delete');
+    // re adaption
+    Route::get('admin/requests-adoption','Admin\RequestAdoptionController@index');
 });
 

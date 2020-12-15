@@ -45,6 +45,11 @@ class AdoptionController extends Controller
         }
         $adoption->save();
         return redirect()->to('admin/adoptions')->with('success', 'Adoption posted');
+    }
 
+    public function delete($id){
+        $data = Adoption::find($id);
+        $data->delete();
+        return redirect()->to('admin/adoptions')->with('success', 'Adoption deleted');
     }
 }

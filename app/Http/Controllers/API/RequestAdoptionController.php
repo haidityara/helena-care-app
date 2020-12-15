@@ -23,6 +23,7 @@ class RequestAdoptionController extends Controller
         $data->reason = $request->reason;
         $data->phone = $request->phone;
         $data->user_id = $request->user_id;
+        $data->adoption_id = $request->adoption_id;
         $data->save();
         // return success
         return response()->json([
