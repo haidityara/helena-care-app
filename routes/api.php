@@ -27,7 +27,7 @@ Route::group(['middleware' => 'APIAuth'], function (){
     Route::post('adoption-request','API\RequestAdoptionController@store');
     //category adoption
     Route::get('adoption-categories','API\CategoryAdoptionController@index');
-
+    Route::post('my-request-adoption','API\RequestAdoptionController@getMyRequest');
 });
 
 

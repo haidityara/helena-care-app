@@ -31,4 +31,12 @@ class RequestAdoptionController extends Controller
             'message' => 'Success add request adoption'
         ]);
     }
+
+    public function getMyRequest(Request $request)
+    {
+        $data = RequestAdoption::where('user_id', $request->user_id)
+            ->orderBy('id','desc')
+            ->get();
+        return response()->json($data);
+    }
 }
